@@ -304,9 +304,9 @@ At this point, you should be able to plug in your system, boot into your bios me
 
 # Images:
 
-![AppleSplash](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/SplashScreen.png)
+![AppleSplashScreen](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/AppleSplashScreen.png)
 
-![OpenCoreBootOption](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/OpenCore_BootOptions.png)
+![OpenCoreBootOptionMenu](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/OpenCore_BootOptionsMenu.png)
 
 ![CFGLockDisabled](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/CFGLock_Disabled.png)
 
