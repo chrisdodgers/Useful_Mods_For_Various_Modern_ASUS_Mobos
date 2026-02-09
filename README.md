@@ -74,7 +74,7 @@ This is a general guide on how to modify your BIOS to change the default splash 
 
 ### What does this mean?
 
-In a section of our bios image, there are multiple hardcoded search paths which get used by the UEFI boot manager. Example: `EFI\Microsoft\bootmgfw.efi` is defined with a name of `Windows Boot Manager`. If that exact path exists in your ESP, you'll see it show up in your boot manager options. Well, of course there isn't a boot path in there pre-defined specifcally for OpenCore. From what I have seen unlike some other systems, there isn't a way to manually add a name/path within your boot manager options. Instead, we are stuck with using the `BOOTX64.efi` shim which then points to `EFI\OC\OpenCore.efi` *(which shows up as UEFI OS in boot manager options)*. If you poke around a section in your bios image - you will see quite a few defined paths that are hardcoded. Lets replace a path we aren't using with the path to point to `OpenCore.efi`.
+In a section of our bios image, there are multiple hardcoded search paths which get used by the UEFI boot manager. Example: `EFI\Microsoft\bootmgfw.efi` is defined with a name of `Windows Boot Manager`. If that exact path exists in your ESP, you'll see it show up in your boot manager options. Well, of course there isn't a boot path in there pre-defined specifically for OpenCore. From what I have seen unlike some other systems, there isn't a way to manually add a name/path within your boot manager options. Instead, we are stuck with using the `BOOTX64.efi` shim which then points to `EFI\OC\OpenCore.efi` *(which shows up as UEFI OS in boot manager options)*. If you poke around a section in your bios image - you will see quite a few defined paths that are hardcoded. Lets replace a path we aren't using with the path to point to `OpenCore.efi`.
 
 ### Finding/Extracting and Making the Edits:
 
@@ -193,7 +193,7 @@ Some mobos from ASUS have a USB port physically labeled as "BIOS" which is used 
 
 ## Using ASUS's USB BIOS FlashBack:
 
-- We need to save our completed moddified image as a `.CAP`. Press `⌘S` in UEFITool to save our image. In my case, I am naming it `SZ790E.CAP`.
+- We need to save our completed modified image as a `.CAP`. Press `⌘S` in UEFITool to save our image. In my case, I am naming it `SZ790E.CAP`.
 
 > [!NOTE]
 > You need to find the exact name your mobo is expecting when flashing! This information can be found by going to the `BIOS & Firmware` section for your specific mobo on ASUS's website. Example - in the release notes of a given image version, you will see something like this in the release notes: `"Before running the USB BIOS Flashback tool, please rename the BIOS file (SZ790E.CAP) using BIOSRenamer."` We know for this exact mobo being used in this guide, we need to make the name `SZ790E.CAP`. What you need to name the image to will most likely be different.
@@ -203,7 +203,7 @@ Some mobos from ASUS have a USB port physically labeled as "BIOS" which is used 
 > **AS WANRED PREVIOUSLY AT THE BEGINNING OF THIS GUIDE, I ACCEPT NO RESPONSIBILITY IF YOU TURN YOUR SYSTEM INTO A PAPERWEIGHT! YOU HAVE BEEN WARNED ONCE MORE! CONTINUE AT YOUR OWN RISK...**
 > 
 
-- The rest of the flashing proceedure you will need to follow the ASUS USB BIOS FlashBack guide linked above, as we now have our `.CAP` image ready to go. 
+- The rest of the flashing procedure you will need to follow the ASUS USB BIOS FlashBack guide linked above, as we now have our `.CAP` image ready to go. 
 - Throw the image on the root of a FAT32 formatted USB drive, shutdown the system, plug it into your "BIOS" USB port, hold the flash button down for 3 seconds, wait for the FlashBack LED to finish blinking as it reads/writes/verifies.......Success. 
 
 
@@ -224,11 +224,11 @@ So now what? At this point, I'd recommend getting some form of an SPI Programmer
 
 - With the system off and disconnected from power, clip your programmer onto what you've identified as your SPI chip(s). 
 
-- Connect your SPI programmer to your machine of choice for performing the backup/flash proceedure. *(In this guide example I am once again using a CH341a. The following commands will vary based on the programmer you are using!)*
+- Connect your SPI programmer to your machine of choice for performing the backup/flash procedure. *(In this guide example I am once again using a CH341a. The following commands will vary based on the programmer you are using!)*
 - Backup your SPI chip(s). Example: `sudo flashrom -p ch341a_spi -r chip1_bkup1.img`.
 
 >[!NOTE]
->Some mobos have *two* SPI chips instead of just one - where an image is split between two chips! This is very important to be aware of, as it will add some aditional steps which I will briefly cover. More detailed flashing guides can be found elsewhere. In the case of having *two* SPI chips - ensure you backup the second one as well. Example: `sudo flashrom -p ch341a_spi -r chip2_bkup1.img`.
+>Some mobos have *two* SPI chips instead of just one - where an image is split between two chips! This is very important to be aware of, as it will add some additional steps which I will briefly cover. More detailed flashing guides can be found elsewhere. In the case of having *two* SPI chips - ensure you backup the second one as well. Example: `sudo flashrom -p ch341a_spi -r chip2_bkup1.img`.
 >
 
 >[!NOTE]
@@ -251,7 +251,7 @@ So now what? At this point, I'd recommend getting some form of an SPI Programmer
 >
 
 - In the case of having a single SPI chip, you verified the 2 dumped backups, verified you correctly and carefully made your modifications to the new image - you can now flash the new image. Example: `sudo flashrom -p ch341a_spi -w Z790MOD.img` *(Remember if you had to use `-c` earlier, you of course will need to specify that as well when writing with flashrom).*
-- Pateintly wait for the flashing/verification process to complete. Once complete, you should be able to disconnect your programmer, plug in, and power on your system. 
+- Patiently wait for the flashing/verification process to complete. Once complete, you should be able to disconnect your programmer, plug in, and power on your system. 
 
 ### I have TWO SPI chips:
 As per above, we need to make sure the dumps of each SPI chip are consistent. Also, keep note of the size of the image for both chips. If you add the size of the image dump from SPI chip 1 and SPI chip 2, it should equal the size of the full modded image we want to flash. Basically, what we will be doing is referencing our two SPI chip dumps so we can figure out where to cut our modded image into two images. 
@@ -295,7 +295,7 @@ As per above, we need to make sure the dumps of each SPI chip are consistent. Al
 >
 
 - Lets flash one SPI chip at a time, starting with SPI chip 1. Example: `sudo flashrom -p ch341a_spi -w chip1_mod.img` *(Remember if you had to use `-c` earlier, you of course will need to specify that as well when writing with flashrom).*
-- *Pateintly wait for the flashing/verification process to complete. Once complete, you should disconnect your programmer, unclip from SPI chip 1, and prepare to repeat the process for SPI chip 2.*
+- *Patiently wait for the flashing/verification process to complete. Once complete, you should disconnect your programmer, unclip from SPI chip 1, and prepare to repeat the process for SPI chip 2.*
 - Once connected to SPI chip 2, lets flash just like how we did previously, instead this time using the image we made for SPI chip 2. Example: `sudo flashrom -p ch341a_spi -w chip2_mod.img`.
 
 
