@@ -306,10 +306,11 @@ At this point, you should be able to plug in your system, boot into your bios me
 
 ![AppleSplash](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/SplashScreen.png)
 
-![KubuntuSplash](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/SplashScreen-Kubuntu.png)
-
 ![OpenCoreBootOption](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/OpenCore_BootOptions.png)
 
+![CFGLockDisabled](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/CFGLock_Disabled.png)
+
+![PCHUnhidden](https://github.com/chrisdodgers/Useful_Mods_For_Various_Modern_ASUS_Mobos/blob/main/Demos/PCH_UnhiddenPage.png)
 
 # Credits:
 - ASUS/AMI for the base hardware and firmware we are using
